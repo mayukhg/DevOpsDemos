@@ -35,6 +35,19 @@ COPY ./webapp.war /usr/local/tomcat/webapps
 
 5. Login to Jenkins console and add Docker server to execute commands from Jenkins  
 Manage Jenkins --> Configure system -->  Publish over SSH --> add Docker server and credentials
+Note: Perform the following steps on the vm
+(1) sudo vi /etc/ssh/sshd_config and ensure the following
+PasswordAuthentication yes
+#PermitEmptyPasswords no
+#PasswordAuthentication no
+(2) sudo service sshd restart
+(3) In Jenkins "Publish over SSH" mention the following options
+   (a) Add SSH Server
+   (b) Name:docker_host
+   (c) hostname:<<ec2-public-ip>>
+   (d) username: dockeradmin
+   (e) password: admin
+   (f) Rest as default
 
 6. Create Jenkins job 
 
